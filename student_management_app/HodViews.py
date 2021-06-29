@@ -125,7 +125,7 @@ def add_student_save(request):
             email=form.cleaned_data["email"]
             password=form.cleaned_data["password"]
             address=form.cleaned_data["address"]
-            session_year_id=form.cleaned_data["session_year_id"]
+            #session_year_id=form.cleaned_data["session_year_id"]
             course_id=request.POST.get("course")
             course=Courses.objects.get(id=course_id)
             sex=form.cleaned_data["sex"]
@@ -140,7 +140,8 @@ def add_student_save(request):
                 user.students.address=address
                 course_obj=Courses.objects.get(id=course)
                 user.students.course_id=course_obj
-                session_year=SessionYearModel.object.get(id=session_year_id)
+                #session_year=SessionYearModel.object.get(id=session_year_id)
+                session_year=SessionYearModel.object.all()
                 user.students.session_year_id=session_year
                 user.students.gender=sex
                 user.students.profile_pic=profile_pic_url
